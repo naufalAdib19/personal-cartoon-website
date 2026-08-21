@@ -1,1 +1,28 @@
+@if (loaderVisible()) {
+  <div class="broadcast-loader" aria-hidden="true" (animationend)="finishLoader($event)">
+    <div class="broadcast-loader__card">
+      <p class="broadcast-loader__kicker">Portfolio broadcast</p>
+
+      <div class="broadcast-loader__dial">
+        <span class="broadcast-loader__crosshair" aria-hidden="true"></span>
+        <span class="broadcast-loader__number broadcast-loader__number--three">3</span>
+        <span class="broadcast-loader__number broadcast-loader__number--two">2</span>
+        <span class="broadcast-loader__number broadcast-loader__number--one">1</span>
+      </div>
+
+      <p class="broadcast-loader__status">
+        <span class="broadcast-loader__status-line broadcast-loader__status-line--one">
+          Initializing
+        </span>
+        <span class="broadcast-loader__status-line broadcast-loader__status-line--two">
+          Rolling
+        </span>
+        <span class="broadcast-loader__status-line broadcast-loader__status-line--three">
+          Live
+        </span>
+      </p>
+    </div>
+  </div>
+}
+
 <router-outlet />
