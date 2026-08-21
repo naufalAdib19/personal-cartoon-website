@@ -45,14 +45,14 @@ export class HomeMotion {
     const context = gsap.context(() => {
       media.add(
         {
+          cinematic: '(min-width: 56rem) and (min-height: 40rem)',
           desktop: '(min-width: 56rem)',
-          mobile: '(max-width: 55.99rem)',
           reduceMotion: '(prefers-reduced-motion: reduce)',
         },
         (mediaContext) => {
-          const { desktop, reduceMotion } = mediaContext.conditions as {
+          const { cinematic, desktop, reduceMotion } = mediaContext.conditions as {
+            cinematic: boolean;
             desktop: boolean;
-            mobile: boolean;
             reduceMotion: boolean;
           };
 
@@ -63,34 +63,112 @@ export class HomeMotion {
           const hero = scope.querySelector<HTMLElement>('[data-motion-hero]');
           const heroCopy = scope.querySelector<HTMLElement>('[data-motion-hero-copy]');
           const heroBrowser = scope.querySelector<HTMLElement>('[data-motion-hero-browser]');
+          const heroScreenLabel = scope.querySelector<HTMLElement>(
+            '[data-motion-hero-screen-label]',
+          );
           const heroStamp = scope.querySelector<HTMLElement>('[data-motion-hero-stamp]');
+          const heroStage = scope.querySelector<HTMLElement>('[data-motion-hero-stage]');
+          const heroTitle = scope.querySelector<HTMLElement>('[data-motion-hero-title]');
+          const signalChips = gsap.utils.toArray<HTMLElement>(
+            '[data-motion-hero-signals] span',
+            scope,
+          );
 
           if (hero && heroCopy && heroBrowser && heroStamp) {
-            gsap
-              .timeline({
-                defaults: { ease: 'none' },
-                scrollTrigger: {
-                  trigger: hero,
-                  start: 'top top',
-                  end: 'bottom top',
-                  scrub: desktop ? 0.8 : 0.35,
-                  invalidateOnRefresh: true,
-                },
-              })
-              .to(heroCopy, { autoAlpha: desktop ? 0.5 : 0.72, yPercent: desktop ? -9 : -5 }, 0)
-              .to(
-                heroBrowser,
-                {
-                  rotation: desktop ? 1.25 : 0,
-                  scale: desktop ? 0.95 : 0.98,
-                  yPercent: desktop ? 16 : 9,
-                },
-                0,
-              )
-              .to(heroStamp, { rotation: desktop ? -8 : -3, yPercent: desktop ? -34 : -18 }, 0);
+            if (cinematic && heroStage && heroTitle && heroScreenLabel) {
+              const headerHeight = () =>
+                document.querySelector<HTMLElement>('app-site-header')?.getBoundingClientRect()
+                  .height ?? 0;
+
+              gsap
+                .timeline({
+                  defaults: { ease: 'none' },
+                  scrollTrigger: {
+                    trigger: hero,
+                    start: () => `top top+=${headerHeight()}`,
+                    end: () => `+=${Math.max(window.innerHeight * 1.8, 1200)}`,
+                    scrub: 0.8,
+                    pin: true,
+                    pinSpacing: true,
+                    anticipatePin: 1,
+                    invalidateOnRefresh: true,
+                  },
+                })
+                .to(heroCopy, { autoAlpha: 0.38, xPercent: -6, yPercent: -10, duration: 1.1 }, 0)
+                .to(heroStage, { scale: 1.06, xPercent: 3, duration: 1.1 }, 0)
+                .to(heroBrowser, { rotation: 0.5, scale: 1.1, yPercent: -5, duration: 1.1 }, 0)
+                .to(heroTitle, { yPercent: -16, duration: 0.9 }, 0.15)
+                .to(
+                  signalChips,
+                  {
+                    x: (index) => (index - 1) * 14,
+                    y: (index) => (index % 2 === 0 ? -16 : 14),
+                    rotation: (index) => (index - 1) * 3,
+                    stagger: 0.06,
+                    duration: 0.8,
+                  },
+                  0.18,
+                )
+                .to(
+                  heroStamp,
+                  {
+                    rotation: -18,
+                    scale: 1.18,
+                    xPercent: -115,
+                    yPercent: -135,
+                    duration: 1.2,
+                  },
+                  0.1,
+                )
+                .to(heroCopy, { autoAlpha: 0, xPercent: -14, yPercent: -18, duration: 0.85 }, 1.05)
+                .to(heroStage, { scale: 1.12, xPercent: 8, yPercent: -6, duration: 0.85 }, 1.05)
+                .to(
+                  heroBrowser,
+                  { rotation: 1.5, scale: 1.04, yPercent: -12, duration: 0.85 },
+                  1.05,
+                )
+                .to(
+                  heroStamp,
+                  {
+                    rotation: -35,
+                    scale: 0.9,
+                    xPercent: -190,
+                    yPercent: -235,
+                    duration: 0.85,
+                  },
+                  1.05,
+                )
+                .to(heroScreenLabel, { autoAlpha: 0.45, xPercent: 35, duration: 0.85 }, 1.05);
+            } else {
+              gsap
+                .timeline({
+                  defaults: { ease: 'none' },
+                  scrollTrigger: {
+                    trigger: hero,
+                    start: 'top top',
+                    end: 'bottom top',
+                    scrub: desktop ? 0.8 : 0.35,
+                    invalidateOnRefresh: true,
+                  },
+                })
+                .to(heroCopy, { autoAlpha: desktop ? 0.5 : 0.72, yPercent: desktop ? -9 : -5 }, 0)
+                .to(
+                  heroBrowser,
+                  {
+                    rotation: desktop ? 1.25 : 0,
+                    scale: desktop ? 0.95 : 0.98,
+                    yPercent: desktop ? 16 : 9,
+                  },
+                  0,
+                )
+                .to(heroStamp, { rotation: desktop ? -8 : -3, yPercent: desktop ? -34 : -18 }, 0);
+            }
           }
 
-          const revealTargets = gsap.utils.toArray<HTMLElement>('[data-motion-reveal]', scope);
+          const projectTargets = gsap.utils.toArray<HTMLElement>('[data-motion-project]', scope);
+          const revealTargets = gsap.utils
+            .toArray<HTMLElement>('[data-motion-reveal]', scope)
+            .filter((target) => !cinematic || !target.hasAttribute('data-motion-project'));
           let projectIndex = 0;
 
           gsap.set(revealTargets, { transition: 'none' });
@@ -112,6 +190,91 @@ export class HomeMotion {
                 once: true,
               },
             });
+          }
+
+          if (cinematic) {
+            projectTargets.forEach((project, index) => {
+              const image = project.querySelector<HTMLElement>('[data-motion-project-image] img');
+              const content = project.querySelector<HTMLElement>('[data-motion-project-content]');
+              const entryRotation = index % 2 === 0 ? -2.2 : 2.2;
+
+              gsap
+                .timeline({
+                  defaults: { ease: 'none' },
+                  scrollTrigger: {
+                    trigger: project,
+                    start: 'top 94%',
+                    end: 'bottom 8%',
+                    scrub: 0.7,
+                    invalidateOnRefresh: true,
+                  },
+                })
+                .fromTo(
+                  project,
+                  { autoAlpha: 0.28, rotation: entryRotation, scale: 0.9, y: 110 },
+                  { autoAlpha: 1, rotation: 0, scale: 1, y: 0, duration: 0.45 },
+                )
+                .to(
+                  project,
+                  { autoAlpha: 0.58, rotation: -entryRotation * 0.35, scale: 0.965, y: -52 },
+                  0.7,
+                );
+
+              if (image) {
+                gsap.fromTo(
+                  image,
+                  { scale: 1.12, yPercent: -5 },
+                  {
+                    scale: 1.12,
+                    yPercent: 5,
+                    ease: 'none',
+                    scrollTrigger: {
+                      trigger: project,
+                      start: 'top bottom',
+                      end: 'bottom top',
+                      scrub: 0.5,
+                    },
+                  },
+                );
+              }
+
+              if (content) {
+                gsap.fromTo(
+                  content,
+                  { y: 24 },
+                  {
+                    y: -12,
+                    ease: 'none',
+                    scrollTrigger: {
+                      trigger: project,
+                      start: 'top 90%',
+                      end: 'bottom 20%',
+                      scrub: 0.55,
+                    },
+                  },
+                );
+              }
+            });
+
+            const workSection = scope.querySelector<HTMLElement>('[data-motion-work-section]');
+            const workProgress = scope.querySelector<HTMLElement>('[data-motion-work-progress]');
+
+            if (workSection && workProgress) {
+              gsap.fromTo(
+                workProgress,
+                { scaleX: 0 },
+                {
+                  scaleX: 1,
+                  ease: 'none',
+                  scrollTrigger: {
+                    trigger: workSection,
+                    start: 'top 70%',
+                    end: 'bottom 80%',
+                    scrub: 0.25,
+                  },
+                },
+              );
+            }
           }
 
           const contactBurst = scope.querySelector<HTMLElement>('[data-motion-contact-burst]');

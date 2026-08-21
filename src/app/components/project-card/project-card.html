@@ -5,7 +5,7 @@
   [attr.aria-labelledby]="titleId()"
 >
   <div class="project-card__preview">
-    <div class="project-card__image-frame">
+    <div class="project-card__image-frame" data-motion-project-image>
       <img
         [ngSrc]="project().image.src"
         [width]="project().image.width"
@@ -14,7 +14,7 @@
       />
     </div>
 
-    <div class="project-card__body">
+    <div class="project-card__body" data-motion-project-content>
       <div class="project-card__meta">
         <p>{{ project().category }}</p>
         <p>{{ project().year }}</p>

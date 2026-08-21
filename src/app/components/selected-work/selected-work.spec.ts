@@ -28,6 +28,8 @@ describe('SelectedWork', () => {
       compiled.querySelector('.selected-work__intro')?.hasAttribute('data-motion-reveal'),
     ).toBe(true);
     expect(compiled.querySelectorAll('app-project-card[data-motion-project]')).toHaveLength(3);
+    expect(compiled.querySelector('[data-motion-work-section]')).not.toBeNull();
+    expect(compiled.querySelector('[data-motion-work-progress]')).not.toBeNull();
     expect(compiled.querySelectorAll('[role="region"]')).toHaveLength(0);
   });
 
