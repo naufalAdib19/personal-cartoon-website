@@ -1,16 +1,79 @@
-<article class="project-card" [attr.aria-labelledby]="'project-title-' + project().slug">
-  <div class="project-card__meta">
-    <p>{{ project().category }}</p>
-    <p>{{ project().year }}</p>
+<article
+  class="project-card"
+  [class.project-card--expanded]="expanded()"
+  [attr.aria-labelledby]="titleId()"
+>
+  <div class="project-card__preview">
+    <div class="project-card__image-frame">
+      <img
+        [ngSrc]="project().image.src"
+        [width]="project().image.width"
+        [height]="project().image.height"
+        [alt]="project().image.alt"
+      />
+    </div>
+
+    <div class="project-card__body">
+      <div class="project-card__meta">
+        <p>{{ project().category }}</p>
+        <p>{{ project().year }}</p>
+      </div>
+
+      <h3 [id]="titleId()">{{ project().title }}</h3>
+      <p class="project-card__summary">{{ project().summary }}</p>
+      <p class="project-card__role"><strong>Role:</strong> {{ project().role }}</p>
+
+      <ul class="project-card__technologies" aria-label="Technologies used">
+        @for (technology of project().technologies; track technology) {
+          <li>{{ technology }}</li>
+        }
+      </ul>
+
+      <button
+        class="project-card__toggle"
+        type="button"
+        [id]="controlId()"
+        [attr.aria-expanded]="expanded()"
+        [attr.aria-controls]="panelId()"
+        [attr.aria-label]="toggleLabel()"
+        (click)="requestToggle()"
+      >
+        {{ expanded() ? 'Close case notes' : 'Open case notes' }}
+        <span aria-hidden="true">{{ expanded() ? '-' : '+' }}</span>
+      </button>
+    </div>
   </div>
 
-  <h3 [id]="'project-title-' + project().slug">{{ project().title }}</h3>
-  <p class="project-card__summary">{{ project().summary }}</p>
-  <p><strong>Role:</strong> {{ project().role }}</p>
+  @if (expanded()) {
+    <div
+      class="project-card__details"
+      role="region"
+      [id]="panelId()"
+      [attr.aria-labelledby]="controlId()"
+    >
+      <section>
+        <h4>The challenge</h4>
+        <p>{{ project().challenge }}</p>
+      </section>
+      <section>
+        <h4>The approach</h4>
+        <p>{{ project().approach }}</p>
+      </section>
+      <section>
+        <h4>The outcome</h4>
+        <p>{{ project().outcome }}</p>
+      </section>
 
-  <ul class="project-card__technologies" aria-label="Technologies used">
-    @for (technology of project().technologies; track technology) {
-      <li>{{ technology }}</li>
-    }
-  </ul>
+      @if (project().links; as links) {
+        <nav class="project-card__links" aria-label="Project links">
+          @if (links.live; as liveUrl) {
+            <a [href]="liveUrl" target="_blank" rel="noopener noreferrer">View live project</a>
+          }
+          @if (links.repository; as repositoryUrl) {
+            <a [href]="repositoryUrl" target="_blank" rel="noopener noreferrer">View source</a>
+          }
+        </nav>
+      }
+    </div>
+  }
 </article>

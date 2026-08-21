@@ -10,6 +10,13 @@
   padding: var(--space-16) var(--content-padding);
 }
 
+.selected-work__intro {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: var(--space-6);
+}
+
 .selected-work__eyebrow {
   margin-bottom: var(--space-3);
   font-size: var(--text-sm);
@@ -17,11 +24,36 @@
 }
 
 h2 {
+  font-size: var(--text-2xl);
+}
+
+.selected-work__count {
+  display: none;
+  max-width: 9rem;
+  font-size: var(--text-sm);
+  font-weight: 800;
+  line-height: 1.1;
+  text-align: right;
+  text-transform: uppercase;
+}
+
+.selected-work__count strong {
+  display: block;
+  color: var(--color-accent);
+  font-family: var(--font-display);
   font-size: var(--text-xl);
+  line-height: 0.8;
+  text-shadow: 2px 2px 0 var(--color-ink);
 }
 
 .selected-work__list {
   display: grid;
-  gap: var(--space-8);
-  margin-top: var(--space-8);
+  gap: var(--space-12);
+  margin-top: var(--space-12);
+}
+
+@media (min-width: 40rem) {
+  .selected-work__count {
+    display: block;
+  }
 }
