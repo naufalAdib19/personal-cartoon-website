@@ -1,4 +1,7 @@
 :host {
+  position: sticky;
+  z-index: var(--layer-header);
+  top: 0;
   display: block;
   border-bottom: 3px solid var(--color-ink);
   background: var(--color-paper);
@@ -10,26 +13,88 @@
   min-height: var(--header-height);
   align-items: center;
   justify-content: space-between;
-  gap: var(--space-4);
+  gap: var(--space-2);
   margin-inline: auto;
   padding-inline: var(--content-padding);
 }
 
 .site-header__brand {
+  display: inline-flex;
+  min-width: 2.75rem;
+  min-height: 2.75rem;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: var(--space-3);
   font-family: var(--font-display);
-  font-size: var(--text-lg);
   text-decoration: none;
+}
+
+.site-header__mark {
+  display: grid;
+  width: 2.5rem;
+  height: 2.5rem;
+  place-items: center;
+  border: 2px solid var(--color-ink);
+  border-radius: 50%;
+  background: var(--color-accent);
+  box-shadow: 2px 2px 0 var(--color-ink);
+  font-size: var(--text-sm);
+  line-height: 1;
+}
+
+.site-header__name {
+  display: none;
+  font-size: var(--text-lg);
+  line-height: 1;
+}
+
+.site-header nav {
+  min-width: 0;
 }
 
 .site-header__links {
   display: flex;
-  gap: clamp(var(--space-3), 3vw, var(--space-8));
+  align-items: center;
+  gap: var(--space-1);
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
 .site-header__links a {
-  font-weight: 700;
+  display: inline-flex;
+  min-height: 2.75rem;
+  align-items: center;
+  padding-inline: var(--space-2);
+  font-size: var(--text-sm);
+  font-weight: 800;
+  text-decoration-thickness: 2px;
   text-underline-offset: 0.25em;
+  white-space: nowrap;
+}
+
+.site-header__contact {
+  border: 2px solid var(--color-ink);
+  border-radius: var(--radius-round);
+  background: var(--color-accent);
+  box-shadow: 2px 2px 0 var(--color-ink);
+  text-decoration: none;
+}
+
+@media (min-width: 48rem) {
+  .site-header {
+    gap: var(--space-8);
+  }
+
+  .site-header__name {
+    display: inline;
+  }
+
+  .site-header__links {
+    gap: var(--space-4);
+  }
+
+  .site-header__links a {
+    padding-inline: var(--space-3);
+  }
 }
