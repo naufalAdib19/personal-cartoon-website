@@ -1,10 +1,40 @@
 <section class="hero" aria-labelledby="hero-title">
-  <p class="hero__role">{{ profile().professionalTitle }}</p>
-  <h1 id="hero-title">{{ profile().displayName }}</h1>
-  <p class="hero__statement">{{ profile().heroStatement }}</p>
+  <div class="hero__copy">
+    <p class="hero__availability">
+      <span class="hero__availability-dot" aria-hidden="true"></span>
+      {{ profile().availability }}
+    </p>
 
-  <nav class="hero__actions" aria-label="Portfolio actions">
-    <a href="#work">View my work</a>
-    <a href="#contact">Get in touch</a>
-  </nav>
+    <p class="hero__role">Now showing: {{ profile().professionalTitle }}</p>
+    <h1 id="hero-title">{{ profile().displayName }}</h1>
+    <p class="hero__statement">{{ profile().heroStatement }}</p>
+
+    <nav class="hero__actions" aria-label="Portfolio actions">
+      <a class="hero__primary-action" href="#work">
+        View my work
+        <span aria-hidden="true">&rarr;</span>
+      </a>
+      <a class="hero__secondary-action" href="#contact">Get in touch</a>
+    </nav>
+  </div>
+
+  <div class="hero__stage retro-halftone" aria-hidden="true">
+    <div class="hero__browser">
+      <div class="hero__browser-bar">
+        <span>portfolio.local</span>
+      </div>
+
+      <div class="hero__screen">
+        <p class="hero__screen-label">Frontend feature</p>
+        <p class="hero__screen-title">Clear UI.<br />Clean state.<br />Built to last.</p>
+        <div class="hero__signals">
+          <span>Strict types</span>
+          <span>Accessible UI</span>
+          <span>Angular</span>
+        </div>
+      </div>
+    </div>
+
+    <p class="hero__stamp">Human-first<br />engineering</p>
+  </div>
 </section>
