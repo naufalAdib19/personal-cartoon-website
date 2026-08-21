@@ -1,3 +1,136 @@
-/* You can add global styles to this file, and also import other style files */
-
 @import 'tailwindcss';
+
+:root {
+  color-scheme: light;
+
+  --color-paper: #f7f1e3;
+  --color-surface: #fffaf0;
+  --color-ink: #211f1a;
+  --color-muted: #6c665a;
+  --color-accent: #e5ad19;
+  --color-focus: #1b62d1;
+
+  --font-display: 'Lilita One', Impact, sans-serif;
+  --font-body: 'Nunito Sans', Arial, sans-serif;
+
+  --text-xs: clamp(0.75rem, 0.71rem + 0.2vw, 0.875rem);
+  --text-sm: clamp(0.875rem, 0.82rem + 0.25vw, 1rem);
+  --text-base: clamp(1rem, 0.94rem + 0.3vw, 1.125rem);
+  --text-lg: clamp(1.125rem, 1.02rem + 0.5vw, 1.5rem);
+  --text-xl: clamp(1.5rem, 1.25rem + 1.2vw, 2.5rem);
+  --text-2xl: clamp(2.5rem, 1.6rem + 4.5vw, 6rem);
+
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-24: 6rem;
+
+  --content-width: 72rem;
+  --content-padding: clamp(1rem, 0.5rem + 2vw, 2rem);
+  --header-height: 4.5rem;
+
+  --border-ink: 3px solid var(--color-ink);
+  --shadow-comic: 5px 5px 0 var(--color-ink);
+  --radius-soft: 0.75rem;
+  --radius-round: 999px;
+
+  --duration-fast: 140ms;
+  --duration-base: 220ms;
+  --ease-pop: cubic-bezier(0.2, 0.9, 0.3, 1.25);
+  --ease-calm: cubic-bezier(0.2, 0, 0, 1);
+
+  --layer-header: 10;
+  --layer-overlay: 20;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-width: 20rem;
+  min-height: 100vh;
+  margin: 0;
+  overflow-x: clip;
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  font-weight: 400;
+  line-height: 1.5;
+  text-rendering: optimizeLegibility;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button,
+[role='button'] {
+  cursor: pointer;
+}
+
+img,
+picture,
+svg,
+video,
+canvas {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin-block: 0;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  line-height: 0.94;
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 4px;
+}
+
+::selection {
+  background: var(--color-accent);
+  color: var(--color-ink);
+}
+
+[id] {
+  scroll-margin-top: calc(var(--header-height) + var(--space-4));
+}
+
+.retro-halftone {
+  background-image: url('/images/halftone.svg');
+  background-size: 1.5rem 1.5rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
