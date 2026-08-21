@@ -5,8 +5,15 @@
 <main id="main-content">
   <app-hero [profile]="profile" />
   <app-selected-work [projects]="projects" />
-  <app-about [paragraphs]="profile.about" [availability]="profile.availability" />
-  <app-contact-cta [email]="profile.email" />
+  <app-about
+    [paragraphs]="profile.about"
+    [focusAreas]="profile.focusAreas"
+    [availability]="profile.availability"
+  />
+  <app-contact-cta [email]="profile.email" [socialLinks]="profile.socialLinks ?? []" />
 </main>
 
-<app-site-footer [displayName]="profile.displayName" />
+<app-site-footer
+  [displayName]="profile.displayName"
+  [professionalTitle]="profile.professionalTitle"
+/>

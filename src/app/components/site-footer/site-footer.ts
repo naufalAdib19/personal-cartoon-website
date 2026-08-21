@@ -9,4 +9,7 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 })
 export class SiteFooter {
   readonly displayName = input.required<string>();
+  readonly professionalTitle = input.required<string>();
+
+  protected readonly currentYear = new Date().getFullYear();
 }

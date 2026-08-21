@@ -1,4 +1,12 @@
 <footer class="site-footer">
-  <p>&copy; 2026 {{ displayName() }}.</p>
-  <a href="#top">Back to top</a>
+  <div class="site-footer__identity">
+    <p class="site-footer__label">End card</p>
+    <p class="site-footer__name">{{ displayName() }}</p>
+    <p>{{ professionalTitle() }}</p>
+  </div>
+
+  <div class="site-footer__meta">
+    <p>&copy; {{ currentYear }} {{ displayName() }}.</p>
+    <a href="#top">Back to top</a>
+  </div>
 </footer>
