@@ -165,24 +165,27 @@ export class HomeMotion {
             }
           }
 
-          const projectTargets = gsap.utils.toArray<HTMLElement>('[data-motion-project]', scope);
+          const experienceTargets = gsap.utils.toArray<HTMLElement>(
+            '[data-motion-experience]',
+            scope,
+          );
           const revealTargets = gsap.utils
             .toArray<HTMLElement>('[data-motion-reveal]', scope)
-            .filter((target) => !cinematic || !target.hasAttribute('data-motion-project'));
-          let projectIndex = 0;
+            .filter((target) => !cinematic || !target.hasAttribute('data-motion-experience'));
+          let experienceIndex = 0;
 
           gsap.set(revealTargets, { transition: 'none' });
 
           for (const target of revealTargets) {
-            const isProject = target.hasAttribute('data-motion-project');
-            const rotation = isProject ? (projectIndex++ % 2 === 0 ? -1.1 : 1.1) : 0;
+            const isExperience = target.hasAttribute('data-motion-experience');
+            const rotation = isExperience ? (experienceIndex++ % 2 === 0 ? -1.1 : 1.1) : 0;
 
             gsap.from(target, {
               autoAlpha: 0,
               duration: desktop ? 0.85 : 0.65,
               ease: 'power3.out',
               rotation,
-              y: isProject ? 56 : 36,
+              y: isExperience ? 56 : 36,
               clearProps: 'opacity,transform,transition,visibility',
               scrollTrigger: {
                 trigger: target,
@@ -193,16 +196,18 @@ export class HomeMotion {
           }
 
           if (cinematic) {
-            projectTargets.forEach((project, index) => {
-              const image = project.querySelector<HTMLElement>('[data-motion-project-image] img');
-              const content = project.querySelector<HTMLElement>('[data-motion-project-content]');
+            experienceTargets.forEach((experience, index) => {
+              const mark = experience.querySelector<HTMLElement>('[data-motion-experience-mark]');
+              const content = experience.querySelector<HTMLElement>(
+                '[data-motion-experience-content]',
+              );
               const entryRotation = index % 2 === 0 ? -2.2 : 2.2;
 
               gsap
                 .timeline({
                   defaults: { ease: 'none' },
                   scrollTrigger: {
-                    trigger: project,
+                    trigger: experience,
                     start: 'top 94%',
                     end: 'bottom 8%',
                     scrub: 0.7,
@@ -210,26 +215,27 @@ export class HomeMotion {
                   },
                 })
                 .fromTo(
-                  project,
+                  experience,
                   { autoAlpha: 0.28, rotation: entryRotation, scale: 0.9, y: 110 },
                   { autoAlpha: 1, rotation: 0, scale: 1, y: 0, duration: 0.45 },
                 )
                 .to(
-                  project,
+                  experience,
                   { autoAlpha: 0.58, rotation: -entryRotation * 0.35, scale: 0.965, y: -52 },
                   0.7,
                 );
 
-              if (image) {
+              if (mark) {
                 gsap.fromTo(
-                  image,
-                  { scale: 1.12, yPercent: -5 },
+                  mark,
+                  { rotation: -4, scale: 0.94, yPercent: -5 },
                   {
-                    scale: 1.12,
+                    rotation: 4,
+                    scale: 1.04,
                     yPercent: 5,
                     ease: 'none',
                     scrollTrigger: {
-                      trigger: project,
+                      trigger: experience,
                       start: 'top bottom',
                       end: 'bottom top',
                       scrub: 0.5,
@@ -246,7 +252,7 @@ export class HomeMotion {
                     y: -12,
                     ease: 'none',
                     scrollTrigger: {
-                      trigger: project,
+                      trigger: experience,
                       start: 'top 90%',
                       end: 'bottom 20%',
                       scrub: 0.55,
@@ -256,18 +262,22 @@ export class HomeMotion {
               }
             });
 
-            const workSection = scope.querySelector<HTMLElement>('[data-motion-work-section]');
-            const workProgress = scope.querySelector<HTMLElement>('[data-motion-work-progress]');
+            const experienceSection = scope.querySelector<HTMLElement>(
+              '[data-motion-experience-section]',
+            );
+            const experienceProgress = scope.querySelector<HTMLElement>(
+              '[data-motion-experience-progress]',
+            );
 
-            if (workSection && workProgress) {
+            if (experienceSection && experienceProgress) {
               gsap.fromTo(
-                workProgress,
+                experienceProgress,
                 { scaleX: 0 },
                 {
                   scaleX: 1,
                   ease: 'none',
                   scrollTrigger: {
-                    trigger: workSection,
+                    trigger: experienceSection,
                     start: 'top 70%',
                     end: 'bottom 80%',
                     scrub: 0.25,

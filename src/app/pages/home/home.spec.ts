@@ -36,15 +36,15 @@ describe('Home', () => {
 
     expect(compiled.querySelectorAll('h1')).toHaveLength(1);
     expect(compiled.querySelectorAll('h2')).toHaveLength(3);
-    expect(compiled.querySelectorAll('app-project-card h3')).toHaveLength(3);
+    expect(compiled.querySelectorAll('app-experience-card h3')).toHaveLength(3);
     expect(compiled.querySelector('#work')).not.toBeNull();
     expect(compiled.querySelector('#about')).not.toBeNull();
     expect(compiled.querySelector('#contact')).not.toBeNull();
   });
 
-  it('renders all three typed projects', () => {
+  it('renders all three typed work experiences', () => {
     const compiled = fixture.nativeElement as HTMLElement;
 
-    expect(compiled.querySelectorAll('app-project-card')).toHaveLength(3);
+    expect(compiled.querySelectorAll('app-experience-card')).toHaveLength(3);
   });
 });

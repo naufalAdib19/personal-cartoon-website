@@ -1,0 +1,35 @@
+<section
+  id="work"
+  class="work-experience"
+  aria-labelledby="experience-title"
+  data-motion-experience-section
+>
+  <div class="work-experience__intro" data-motion-reveal>
+    <div>
+      <p class="work-experience__eyebrow">Placeholder timeline - replace with your history</p>
+      <h2 id="experience-title">Work experience</h2>
+    </div>
+
+    <p class="work-experience__count">
+      <strong>{{ experiences().length }}</strong>
+      roles on record
+    </p>
+
+    <div class="work-experience__progress" aria-hidden="true">
+      <span data-motion-experience-progress></span>
+    </div>
+  </div>
+
+  <div class="work-experience__list">
+    @for (experience of experiences(); track experience.slug; let index = $index) {
+      <app-experience-card
+        data-motion-experience
+        data-motion-reveal
+        [experience]="experience"
+        [order]="index"
+        [expanded]="activeExperienceSlug() === experience.slug"
+        (toggleRequested)="toggleExperience($event)"
+      />
+    }
+  </div>
+</section>
