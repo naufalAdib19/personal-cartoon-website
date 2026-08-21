@@ -5,7 +5,7 @@
 .about {
   width: min(100%, var(--content-width));
   margin-inline: auto;
-  padding: var(--space-24) var(--content-padding);
+  padding: var(--section-space) var(--content-padding);
 }
 
 .about__header p,
@@ -64,13 +64,14 @@ h2 {
 
 .about__availability {
   display: inline-block;
+  max-width: 100%;
   margin-top: var(--space-8);
   padding: var(--space-2) var(--space-3);
   border: 2px solid var(--color-ink);
   background: var(--color-accent);
   font-size: var(--text-sm);
   font-weight: 900;
-  transform: rotate(-1deg);
+  overflow-wrap: anywhere;
 }
 
 .about__focus {
@@ -97,5 +98,11 @@ h2 {
   .about__layout {
     grid-template-columns: minmax(0, 1.35fr) minmax(18rem, 0.65fr);
     align-items: start;
+  }
+}
+
+@media (min-width: 40rem) {
+  .about__availability {
+    transform: rotate(-1deg);
   }
 }

@@ -1,6 +1,6 @@
 .not-found {
   display: grid;
-  min-height: 100vh;
+  min-height: 100svh;
   place-items: center;
   padding: var(--content-padding);
 }
@@ -42,7 +42,9 @@ h1 {
 }
 
 .not-found__home-link {
-  display: inline-block;
+  display: inline-flex;
+  min-height: 3rem;
+  align-items: center;
   margin-top: var(--space-8);
   padding: var(--space-3) var(--space-6);
   border: var(--border-ink);

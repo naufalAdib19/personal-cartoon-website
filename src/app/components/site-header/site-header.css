@@ -98,3 +98,13 @@
     padding-inline: var(--space-3);
   }
 }
+
+@media (max-width: 22rem) {
+  .site-header__links a {
+    padding-inline: var(--space-1);
+  }
+
+  .site-header__links .site-header__contact {
+    padding-inline: var(--space-2);
+  }
+}

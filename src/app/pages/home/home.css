@@ -7,6 +7,7 @@
   z-index: var(--layer-overlay);
   top: var(--space-4);
   left: var(--space-4);
+  max-width: calc(100% - var(--space-8));
   padding: var(--space-3) var(--space-4);
   border: var(--border-ink);
   border-radius: var(--radius-soft);

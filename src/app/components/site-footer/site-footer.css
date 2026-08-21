@@ -10,7 +10,8 @@
   width: min(100%, var(--content-width));
   min-height: 9rem;
   flex-wrap: wrap;
-  align-items: end;
+  flex-direction: column;
+  align-items: start;
   justify-content: space-between;
   gap: var(--space-8);
   margin-inline: auto;
@@ -33,6 +34,8 @@
 
 .site-footer__meta {
   display: flex;
+  width: 100%;
+  flex-direction: column;
   flex-wrap: wrap;
   gap: var(--space-4) var(--space-8);
 }
@@ -41,4 +44,16 @@
   color: var(--color-accent);
   font-weight: 900;
   text-underline-offset: 0.25em;
+}
+
+@media (min-width: 40rem) {
+  .site-footer {
+    flex-direction: row;
+    align-items: end;
+  }
+
+  .site-footer__meta {
+    width: auto;
+    flex-direction: row;
+  }
 }

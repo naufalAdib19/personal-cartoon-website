@@ -70,4 +70,23 @@ describe('ProjectCard', () => {
     expect(links).toHaveLength(2);
     expect([...links].every((link) => link.rel === 'noopener noreferrer')).toBe(true);
   });
+
+  it('preserves card semantics with long project content', async () => {
+    const longProject: Project = {
+      ...projects[0],
+      title: 'A deliberately long project title for narrow portfolio layouts',
+      technologies: ['A-very-long-technology-name-that-must-wrap-within-the-card'],
+    };
+
+    fixture.componentRef.setInput('project', longProject);
+    await fixture.whenStable();
+
+    const compiled = fixture.nativeElement as HTMLElement;
+
+    expect(compiled.querySelector('h3')?.textContent).toContain(longProject.title);
+    expect(compiled.querySelector('.project-card__technologies li')?.textContent).toContain(
+      longProject.technologies[0],
+    );
+    expect(compiled.querySelectorAll('.project-card__toggle')).toHaveLength(1);
+  });
 });

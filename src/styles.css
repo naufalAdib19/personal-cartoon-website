@@ -32,6 +32,7 @@
 
   --content-width: 72rem;
   --content-padding: clamp(1rem, 0.5rem + 2vw, 2rem);
+  --section-space: clamp(4rem, 7vw, 7rem);
   --header-height: 4.5rem;
 
   --border-ink: 3px solid var(--color-ink);
@@ -95,6 +96,11 @@ a {
   color: inherit;
 }
 
+a,
+button {
+  touch-action: manipulation;
+}
+
 h1,
 h2,
 h3,
@@ -108,6 +114,13 @@ h3 {
   font-family: var(--font-display);
   font-weight: 400;
   line-height: 0.94;
+  overflow-wrap: break-word;
+  text-wrap: balance;
+}
+
+p,
+li {
+  overflow-wrap: break-word;
 }
 
 :focus-visible {
