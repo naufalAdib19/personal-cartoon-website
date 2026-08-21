@@ -1,4 +1,4 @@
-export type TProject = {
+export interface TProject {
   slug: string;
   title: string;
   summary: string;
@@ -16,4 +16,4 @@ export type TProject = {
     live?: string;
     repository?: string;
   };
-};
+}
