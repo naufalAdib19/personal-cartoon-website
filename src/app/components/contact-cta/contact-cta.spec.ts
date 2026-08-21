@@ -25,6 +25,8 @@ describe('ContactCta', () => {
       `mailto:${profile.email}?subject=Frontend%20opportunity`,
     );
     expect(emailLink?.textContent).toContain(profile.email);
+    expect(emailLink?.classList.contains('comic-press')).toBe(true);
+    expect(compiled.querySelector('.contact')?.classList.contains('scroll-reveal')).toBe(true);
     expect(compiled.querySelector('.contact__socials')).toBeNull();
   });
 

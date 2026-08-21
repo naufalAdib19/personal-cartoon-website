@@ -99,6 +99,13 @@ h2 {
   font-size: var(--text-base);
 }
 
+@media (hover: hover) {
+  .contact__email:hover {
+    box-shadow: 6px 6px 0 var(--color-surface);
+    transform: translate(-1px, -1px);
+  }
+}
+
 .contact__socials {
   display: flex;
   flex-wrap: wrap;

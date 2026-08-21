@@ -27,6 +27,9 @@ describe('ProjectCard', () => {
     expect(image?.getAttribute('height')).toBe(String(projects[0].image.height));
     expect(toggle?.getAttribute('aria-expanded')).toBe('false');
     expect(toggle?.getAttribute('aria-controls')).toBe(`project-panel-${projects[0].slug}`);
+    expect(toggle?.classList.contains('comic-press')).toBe(true);
+    expect(compiled.querySelector('.project-card')?.classList.contains('motion-card')).toBe(true);
+    expect(compiled.querySelector('.project-card')?.classList.contains('scroll-reveal')).toBe(true);
   });
 
   it('emits its project slug when toggled', () => {

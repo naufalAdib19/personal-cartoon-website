@@ -35,5 +35,6 @@ describe('About', () => {
     expect(focusAreas).toHaveLength(3);
     expect(focusAreas[0].textContent).toContain(profile.focusAreas[0].title);
     expect(focusAreas[0].textContent).toContain(profile.focusAreas[0].description);
+    expect(compiled.querySelectorAll('.scroll-reveal')).toHaveLength(5);
   });
 });

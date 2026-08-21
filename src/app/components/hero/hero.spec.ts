@@ -43,4 +43,18 @@ describe('Hero', () => {
     expect(stage?.getAttribute('aria-hidden')).toBe('true');
     expect(stage?.querySelectorAll('a, button, [tabindex]')).toHaveLength(0);
   });
+
+  it('applies the orchestrated motion primitives without hiding content', () => {
+    const compiled = fixture.nativeElement as HTMLElement;
+
+    expect(compiled.querySelectorAll('.motion-reveal')).toHaveLength(5);
+    expect(compiled.querySelector('.hero__stage')?.classList.contains('motion-pop')).toBe(true);
+    expect(compiled.querySelectorAll('.hero__actions .comic-press')).toHaveLength(2);
+    expect(
+      compiled.querySelector('.hero__browser')?.classList.contains('scroll-parallax--forward'),
+    ).toBe(true);
+    expect(
+      compiled.querySelector('.hero__stamp')?.classList.contains('scroll-parallax--reverse'),
+    ).toBe(true);
+  });
 });

@@ -1,5 +1,5 @@
-<section id="contact" class="contact" aria-labelledby="contact-title">
-  <div class="contact__burst" aria-hidden="true">Send a signal</div>
+<section id="contact" class="contact motion-trigger scroll-reveal" aria-labelledby="contact-title">
+  <div class="contact__burst motion-wiggle" aria-hidden="true">Send a signal</div>
 
   <div class="contact__copy">
     <p class="contact__eyebrow">Have a role or project in mind?</p>
@@ -9,7 +9,7 @@
       like.
     </p>
 
-    <a class="contact__email" [href]="emailHref()">
+    <a class="contact__email comic-press" [href]="emailHref()">
       <span>Start a conversation</span>
       <strong>{{ email() }}</strong>
     </a>
@@ -17,7 +17,7 @@
     @if (socialLinks().length > 0) {
       <nav class="contact__socials" aria-label="Social profiles">
         @for (socialLink of socialLinks(); track socialLink.url) {
-          <a [href]="socialLink.url" target="_blank" rel="noopener noreferrer">
+          <a class="comic-press" [href]="socialLink.url" target="_blank" rel="noopener noreferrer">
             {{ socialLink.label }}
           </a>
         }

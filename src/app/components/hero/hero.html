@@ -1,25 +1,30 @@
 <section class="hero" aria-labelledby="hero-title">
   <div class="hero__copy">
-    <p class="hero__availability">
+    <p class="hero__availability motion-reveal">
       <span class="hero__availability-dot" aria-hidden="true"></span>
       {{ profile().availability }}
     </p>
 
-    <p class="hero__role">Now showing: {{ profile().professionalTitle }}</p>
-    <h1 id="hero-title">{{ profile().displayName }}</h1>
-    <p class="hero__statement">{{ profile().heroStatement }}</p>
+    <p class="hero__role motion-reveal motion-delay-1">
+      Now showing: {{ profile().professionalTitle }}
+    </p>
+    <h1 id="hero-title" class="motion-reveal motion-delay-2">{{ profile().displayName }}</h1>
+    <p class="hero__statement motion-reveal motion-delay-3">{{ profile().heroStatement }}</p>
 
-    <nav class="hero__actions" aria-label="Portfolio actions">
-      <a class="hero__primary-action" href="#work">
+    <nav class="hero__actions motion-reveal motion-delay-4" aria-label="Portfolio actions">
+      <a class="hero__primary-action comic-press" href="#work">
         View my work
         <span aria-hidden="true">&rarr;</span>
       </a>
-      <a class="hero__secondary-action" href="#contact">Get in touch</a>
+      <a class="hero__secondary-action comic-press" href="#contact">Get in touch</a>
     </nav>
   </div>
 
-  <div class="hero__stage retro-halftone" aria-hidden="true">
-    <div class="hero__browser">
+  <div
+    class="hero__stage retro-halftone motion-pop motion-delay-2 motion-trigger"
+    aria-hidden="true"
+  >
+    <div class="hero__browser scroll-parallax scroll-parallax--forward">
       <div class="hero__browser-bar">
         <span>portfolio.local</span>
       </div>
@@ -35,6 +40,8 @@
       </div>
     </div>
 
-    <p class="hero__stamp">Human-first<br />engineering</p>
+    <p class="hero__stamp motion-wiggle scroll-parallax scroll-parallax--reverse">
+      Human-first<br />engineering
+    </p>
   </div>
 </section>

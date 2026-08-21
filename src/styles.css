@@ -42,6 +42,9 @@
 
   --duration-fast: 140ms;
   --duration-base: 220ms;
+  --duration-panel: 320ms;
+  --duration-reveal: 520ms;
+  --delay-step: 70ms;
   --ease-pop: cubic-bezier(0.2, 0.9, 0.3, 1.25);
   --ease-calm: cubic-bezier(0.2, 0, 0, 1);
 
@@ -142,8 +145,205 @@ li {
   background-size: 1.5rem 1.5rem;
 }
 
+.motion-reveal {
+  animation: motion-reveal var(--duration-reveal) var(--ease-calm) both;
+  animation-delay: var(--motion-delay, 0ms);
+}
+
+.motion-delay-1 {
+  --motion-delay: calc(var(--delay-step) * 1);
+}
+
+.motion-delay-2 {
+  --motion-delay: calc(var(--delay-step) * 2);
+}
+
+.motion-delay-3 {
+  --motion-delay: calc(var(--delay-step) * 3);
+}
+
+.motion-delay-4 {
+  --motion-delay: calc(var(--delay-step) * 4);
+}
+
+.motion-pop {
+  animation: motion-pop var(--duration-reveal) var(--ease-pop) both;
+  animation-delay: var(--motion-delay, 0ms);
+}
+
+.motion-panel-enter {
+  animation: motion-panel-enter var(--duration-panel) var(--ease-calm);
+}
+
+.comic-press {
+  transition:
+    box-shadow var(--duration-fast) var(--ease-calm),
+    transform var(--duration-fast) var(--ease-calm);
+}
+
+.comic-press:active {
+  box-shadow: none;
+  transform: translate(3px, 3px);
+}
+
+.motion-card {
+  transition:
+    box-shadow var(--duration-base) var(--ease-calm),
+    transform var(--duration-base) var(--ease-pop);
+}
+
+.motion-card img {
+  transition: scale var(--duration-base) var(--ease-calm);
+}
+
+@media (hover: hover) {
+  .comic-press:hover {
+    transform: translateY(-1px);
+  }
+
+  .motion-card:not(.motion-card--active):hover,
+  .motion-card:not(.motion-card--active):focus-within {
+    transform: translateY(-3px);
+  }
+
+  .motion-card:not(.motion-card--active):hover img,
+  .motion-card:not(.motion-card--active):focus-within img {
+    scale: 1.02;
+  }
+
+  .motion-trigger:hover .motion-wiggle,
+  .motion-trigger:focus-within .motion-wiggle {
+    animation: motion-wiggle var(--duration-panel) var(--ease-pop);
+  }
+}
+
+@keyframes motion-reveal {
+  from {
+    opacity: 0;
+    translate: 0 0.75rem;
+  }
+
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+
+@keyframes motion-pop {
+  from {
+    opacity: 0;
+    scale: 0.94;
+  }
+
+  to {
+    opacity: 1;
+    scale: 1;
+  }
+}
+
+@keyframes motion-panel-enter {
+  from {
+    opacity: 0;
+    translate: 0 -0.5rem;
+  }
+
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+
+@keyframes motion-wiggle {
+  30% {
+    rotate: -6deg;
+    scale: 1.06;
+  }
+
+  70% {
+    rotate: 5deg;
+  }
+}
+
+@keyframes scroll-reveal {
+  from {
+    opacity: 0;
+    scale: 0.98;
+    translate: 0 1.5rem;
+  }
+
+  to {
+    opacity: 1;
+    scale: 1;
+    translate: 0 0;
+  }
+}
+
+@keyframes scroll-parallax {
+  from {
+    translate: 0 var(--parallax-start, -0.75rem);
+  }
+
+  to {
+    translate: 0 var(--parallax-end, 1.25rem);
+  }
+}
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .scroll-reveal {
+      animation: scroll-reveal 1ms linear both;
+      animation-range: entry 0% entry 60%;
+      animation-timeline: view();
+    }
+
+    .scroll-parallax {
+      animation: scroll-parallax 1ms linear both;
+      animation-range: cover 0% cover 100%;
+      animation-timeline: view();
+    }
+
+    .scroll-parallax--forward {
+      --parallax-start: -0.75rem;
+      --parallax-end: 1.5rem;
+    }
+
+    .scroll-parallax--reverse {
+      --parallax-start: 1rem;
+      --parallax-end: -1rem;
+    }
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration-fast: 1ms;
+    --duration-base: 1ms;
+    --duration-panel: 1ms;
+    --duration-reveal: 1ms;
+    --delay-step: 0ms;
+  }
+
   html {
     scroll-behavior: auto;
+  }
+
+  .motion-reveal,
+  .motion-pop,
+  .motion-panel-enter,
+  .motion-trigger:hover .motion-wiggle,
+  .motion-trigger:focus-within .motion-wiggle {
+    animation: none;
+  }
+
+  .comic-press:hover,
+  .comic-press:active,
+  .motion-card:not(.motion-card--active):hover,
+  .motion-card:not(.motion-card--active):focus-within {
+    transform: none;
+  }
+
+  .motion-card:not(.motion-card--active):hover img,
+  .motion-card:not(.motion-card--active):focus-within img {
+    scale: 1;
   }
 }

@@ -24,6 +24,9 @@ describe('SelectedWork', () => {
     expect([...toggles].every((toggle) => toggle.getAttribute('aria-expanded') === 'false')).toBe(
       true,
     );
+    expect(
+      compiled.querySelector('.selected-work__intro')?.classList.contains('scroll-reveal'),
+    ).toBe(true);
     expect(compiled.querySelectorAll('[role="region"]')).toHaveLength(0);
   });
 

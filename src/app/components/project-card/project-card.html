@@ -1,6 +1,7 @@
 <article
-  class="project-card"
+  class="project-card motion-card scroll-reveal"
   [class.project-card--expanded]="expanded()"
+  [class.motion-card--active]="expanded()"
   [attr.aria-labelledby]="titleId()"
 >
   <div class="project-card__preview">
@@ -30,7 +31,7 @@
       </ul>
 
       <button
-        class="project-card__toggle"
+        class="project-card__toggle comic-press"
         type="button"
         [id]="controlId()"
         [attr.aria-expanded]="expanded()"
@@ -47,6 +48,7 @@
   @if (expanded()) {
     <div
       class="project-card__details"
+      animate.enter="motion-panel-enter"
       role="region"
       [id]="panelId()"
       [attr.aria-labelledby]="controlId()"
@@ -67,10 +69,14 @@
       @if (project().links; as links) {
         <nav class="project-card__links" aria-label="Project links">
           @if (links.live; as liveUrl) {
-            <a [href]="liveUrl" target="_blank" rel="noopener noreferrer">View live project</a>
+            <a class="comic-press" [href]="liveUrl" target="_blank" rel="noopener noreferrer">
+              View live project
+            </a>
           }
           @if (links.repository; as repositoryUrl) {
-            <a [href]="repositoryUrl" target="_blank" rel="noopener noreferrer">View source</a>
+            <a class="comic-press" [href]="repositoryUrl" target="_blank" rel="noopener noreferrer">
+              View source
+            </a>
           }
         </nav>
       }

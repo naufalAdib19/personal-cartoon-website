@@ -54,8 +54,3 @@ h1 {
   font-weight: 800;
   text-decoration: none;
 }
-
-.not-found__home-link:active {
-  box-shadow: none;
-  transform: translate(3px, 3px);
-}

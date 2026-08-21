@@ -112,6 +112,12 @@ h3 {
   line-height: 1;
 }
 
+@media (hover: hover) {
+  .project-card__toggle:hover {
+    background: var(--color-accent);
+  }
+}
+
 .project-card__details {
   display: grid;
   gap: var(--space-8);
