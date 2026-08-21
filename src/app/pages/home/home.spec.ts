@@ -28,6 +28,7 @@ describe('Home', () => {
     expect(compiled.querySelector('app-site-header header')).not.toBeNull();
     expect(compiled.querySelector('app-site-footer footer')).not.toBeNull();
     expect(compiled.querySelector('.skip-link')?.getAttribute('href')).toBe('#main-content');
+    expect(compiled.querySelector('main')?.hasAttribute('appHomeMotion')).toBe(true);
   });
 
   it('renders the required sections with a valid heading hierarchy', () => {

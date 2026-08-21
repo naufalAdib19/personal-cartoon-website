@@ -50,11 +50,8 @@ describe('Hero', () => {
     expect(compiled.querySelectorAll('.motion-reveal')).toHaveLength(5);
     expect(compiled.querySelector('.hero__stage')?.classList.contains('motion-pop')).toBe(true);
     expect(compiled.querySelectorAll('.hero__actions .comic-press')).toHaveLength(2);
-    expect(
-      compiled.querySelector('.hero__browser')?.classList.contains('scroll-parallax--forward'),
-    ).toBe(true);
-    expect(
-      compiled.querySelector('.hero__stamp')?.classList.contains('scroll-parallax--reverse'),
-    ).toBe(true);
+    expect(compiled.querySelector('[data-motion-hero]')).not.toBeNull();
+    expect(compiled.querySelector('[data-motion-hero-browser]')).not.toBeNull();
+    expect(compiled.querySelector('[data-motion-hero-stamp]')).not.toBeNull();
   });
 });

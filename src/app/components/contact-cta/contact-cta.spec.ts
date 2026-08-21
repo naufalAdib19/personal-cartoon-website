@@ -26,7 +26,8 @@ describe('ContactCta', () => {
     );
     expect(emailLink?.textContent).toContain(profile.email);
     expect(emailLink?.classList.contains('comic-press')).toBe(true);
-    expect(compiled.querySelector('.contact')?.classList.contains('scroll-reveal')).toBe(true);
+    expect(compiled.querySelector('.contact')?.hasAttribute('data-motion-reveal')).toBe(true);
+    expect(compiled.querySelector('[data-motion-contact-burst]')).not.toBeNull();
     expect(compiled.querySelector('.contact__socials')).toBeNull();
   });
 

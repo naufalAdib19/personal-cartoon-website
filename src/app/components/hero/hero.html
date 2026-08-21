@@ -1,5 +1,5 @@
-<section class="hero" aria-labelledby="hero-title">
-  <div class="hero__copy">
+<section class="hero" aria-labelledby="hero-title" data-motion-hero>
+  <div class="hero__copy" data-motion-hero-copy>
     <p class="hero__availability motion-reveal">
       <span class="hero__availability-dot" aria-hidden="true"></span>
       {{ profile().availability }}
@@ -24,7 +24,7 @@
     class="hero__stage retro-halftone motion-pop motion-delay-2 motion-trigger"
     aria-hidden="true"
   >
-    <div class="hero__browser scroll-parallax scroll-parallax--forward">
+    <div class="hero__browser" data-motion-hero-browser>
       <div class="hero__browser-bar">
         <span>portfolio.local</span>
       </div>
@@ -40,8 +40,6 @@
       </div>
     </div>
 
-    <p class="hero__stamp motion-wiggle scroll-parallax scroll-parallax--reverse">
-      Human-first<br />engineering
-    </p>
+    <p class="hero__stamp motion-wiggle" data-motion-hero-stamp>Human-first<br />engineering</p>
   </div>
 </section>

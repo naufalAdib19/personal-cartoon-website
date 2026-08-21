@@ -264,56 +264,6 @@ li {
   }
 }
 
-@keyframes scroll-reveal {
-  from {
-    opacity: 0;
-    scale: 0.98;
-    translate: 0 1.5rem;
-  }
-
-  to {
-    opacity: 1;
-    scale: 1;
-    translate: 0 0;
-  }
-}
-
-@keyframes scroll-parallax {
-  from {
-    translate: 0 var(--parallax-start, -0.75rem);
-  }
-
-  to {
-    translate: 0 var(--parallax-end, 1.25rem);
-  }
-}
-
-@supports (animation-timeline: view()) {
-  @media (prefers-reduced-motion: no-preference) {
-    .scroll-reveal {
-      animation: scroll-reveal 1ms linear both;
-      animation-range: entry 0% entry 60%;
-      animation-timeline: view();
-    }
-
-    .scroll-parallax {
-      animation: scroll-parallax 1ms linear both;
-      animation-range: cover 0% cover 100%;
-      animation-timeline: view();
-    }
-
-    .scroll-parallax--forward {
-      --parallax-start: -0.75rem;
-      --parallax-end: 1.5rem;
-    }
-
-    .scroll-parallax--reverse {
-      --parallax-start: 1rem;
-      --parallax-end: -1rem;
-    }
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
   :root {
     --duration-fast: 1ms;

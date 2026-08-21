@@ -8,10 +8,11 @@ import { SiteFooter } from '../../components/site-footer/site-footer';
 import { SiteHeader } from '../../components/site-header/site-header';
 import { profile } from '../../content/profile.content';
 import { projects } from '../../content/projects.content';
+import { HomeMotion } from '../../directives/home-motion';
 
 @Component({
   selector: 'app-home',
-  imports: [About, ContactCta, Hero, SelectedWork, SiteFooter, SiteHeader],
+  imports: [About, ContactCta, Hero, HomeMotion, SelectedWork, SiteFooter, SiteHeader],
   templateUrl: './home.html',
   styleUrl: './home.css',
   changeDetection: ChangeDetectionStrategy.OnPush,

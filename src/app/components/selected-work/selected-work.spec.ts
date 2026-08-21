@@ -25,8 +25,9 @@ describe('SelectedWork', () => {
       true,
     );
     expect(
-      compiled.querySelector('.selected-work__intro')?.classList.contains('scroll-reveal'),
+      compiled.querySelector('.selected-work__intro')?.hasAttribute('data-motion-reveal'),
     ).toBe(true);
+    expect(compiled.querySelectorAll('app-project-card[data-motion-project]')).toHaveLength(3);
     expect(compiled.querySelectorAll('[role="region"]')).toHaveLength(0);
   });
 

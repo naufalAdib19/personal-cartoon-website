@@ -1,11 +1,11 @@
 <section id="about" class="about" aria-labelledby="about-title">
-  <header class="about__header scroll-reveal">
+  <header class="about__header" data-motion-reveal>
     <p>Behind the build</p>
     <h2 id="about-title">Production notes</h2>
   </header>
 
   <div class="about__layout">
-    <article class="about__note motion-trigger scroll-reveal">
+    <article class="about__note motion-trigger" data-motion-reveal>
       <span class="about__code-mark motion-wiggle" aria-hidden="true">&lt;/&gt;</span>
       <p class="about__note-label">A little about me</p>
       <div class="about__copy">
@@ -18,7 +18,7 @@
 
     <ul class="about__focus" aria-label="Engineering focus areas">
       @for (focusArea of focusAreas(); track focusArea.title) {
-        <li class="motion-card scroll-reveal">
+        <li class="motion-card" data-motion-reveal>
           <h3>{{ focusArea.title }}</h3>
           <p>{{ focusArea.description }}</p>
         </li>
