@@ -1,0 +1,16 @@
+<article class="project-card" [attr.aria-labelledby]="'project-title-' + project().slug">
+  <div class="project-card__meta">
+    <p>{{ project().category }}</p>
+    <p>{{ project().year }}</p>
+  </div>
+
+  <h3 [id]="'project-title-' + project().slug">{{ project().title }}</h3>
+  <p class="project-card__summary">{{ project().summary }}</p>
+  <p><strong>Role:</strong> {{ project().role }}</p>
+
+  <ul class="project-card__technologies" aria-label="Technologies used">
+    @for (technology of project().technologies; track technology) {
+      <li>{{ technology }}</li>
+    }
+  </ul>
+</article>

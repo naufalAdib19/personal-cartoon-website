@@ -19,4 +19,31 @@ describe('Home', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('renders the page landmarks in reading order', () => {
+    const compiled = fixture.nativeElement as HTMLElement;
+    const landmarks = [...compiled.querySelectorAll('header, main, footer')].map((element) =>
+      element.tagName.toLowerCase(),
+    );
+
+    expect(landmarks).toEqual(['header', 'main', 'footer']);
+    expect(compiled.querySelector('.skip-link')?.getAttribute('href')).toBe('#main-content');
+  });
+
+  it('renders the required sections with a valid heading hierarchy', () => {
+    const compiled = fixture.nativeElement as HTMLElement;
+
+    expect(compiled.querySelectorAll('h1')).toHaveLength(1);
+    expect(compiled.querySelectorAll('h2')).toHaveLength(3);
+    expect(compiled.querySelectorAll('h3')).toHaveLength(3);
+    expect(compiled.querySelector('#work')).not.toBeNull();
+    expect(compiled.querySelector('#about')).not.toBeNull();
+    expect(compiled.querySelector('#contact')).not.toBeNull();
+  });
+
+  it('renders all three typed projects', () => {
+    const compiled = fixture.nativeElement as HTMLElement;
+
+    expect(compiled.querySelectorAll('app-project-card')).toHaveLength(3);
+  });
 });

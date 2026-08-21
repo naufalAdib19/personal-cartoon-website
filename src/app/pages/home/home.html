@@ -1,1 +1,12 @@
-<p>home works!</p>
+<a class="skip-link" href="#main-content">Skip to main content</a>
+
+<app-site-header [displayName]="profile.displayName" />
+
+<main id="main-content">
+  <app-hero [profile]="profile" />
+  <app-selected-work [projects]="projects" />
+  <app-about [paragraphs]="profile.about" [availability]="profile.availability" />
+  <app-contact-cta [email]="profile.email" />
+</main>
+
+<app-site-footer [displayName]="profile.displayName" />

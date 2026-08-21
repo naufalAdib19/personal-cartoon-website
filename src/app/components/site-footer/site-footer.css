@@ -1,0 +1,21 @@
+:host {
+  display: block;
+  border-top: 3px solid var(--color-ink);
+}
+
+.site-footer {
+  display: flex;
+  width: min(100%, var(--content-width));
+  min-height: var(--header-height);
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  margin-inline: auto;
+  padding: var(--space-4) var(--content-padding);
+  font-size: var(--text-sm);
+}
+
+.site-footer a {
+  font-weight: 800;
+  text-underline-offset: 0.25em;
+}

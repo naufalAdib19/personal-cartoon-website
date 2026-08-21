@@ -1,0 +1,47 @@
+:host {
+  display: block;
+}
+
+.project-card {
+  padding: var(--space-6);
+  border: var(--border-ink);
+  border-radius: var(--radius-soft);
+  background: var(--color-paper);
+  box-shadow: var(--shadow-comic);
+}
+
+.project-card__meta {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-4);
+  font-size: var(--text-sm);
+  font-weight: 800;
+}
+
+h3 {
+  margin-top: var(--space-4);
+  font-size: var(--text-xl);
+}
+
+.project-card__summary {
+  max-width: 56rem;
+  margin-block: var(--space-4);
+}
+
+.project-card__technologies {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin: var(--space-6) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.project-card__technologies li {
+  padding: var(--space-1) var(--space-3);
+  border: 2px solid var(--color-ink);
+  border-radius: var(--radius-round);
+  background: var(--color-accent);
+  font-size: var(--text-sm);
+  font-weight: 700;
+}
