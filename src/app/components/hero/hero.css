@@ -155,7 +155,7 @@ h1 {
 
 .hero__screen {
   height: calc(100% - 2.5rem);
-  padding: clamp(var(--space-4), 5vw, var(--space-8));
+  padding: clamp(var(--space-3), 2.5vw, var(--space-6));
   background: var(--color-ink);
   color: var(--color-paper);
 }
@@ -169,9 +169,9 @@ h1 {
 }
 
 .hero__screen-title {
-  margin-top: var(--space-3);
+  margin-top: var(--space-2);
   font-family: var(--font-display);
-  font-size: clamp(1.75rem, 7vw, 4rem);
+  font-size: clamp(1.5rem, 5vw, 2.75rem);
   line-height: 0.88;
   text-transform: uppercase;
 }
@@ -180,7 +180,7 @@ h1 {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-2);
-  margin-top: var(--space-6);
+  margin-top: var(--space-3);
 }
 
 .hero__signals span {

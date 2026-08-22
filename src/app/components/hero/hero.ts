@@ -1,10 +1,11 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 
 import { Profile } from '../../models/profile.model';
+import { ArchitectureScene } from '../architecture-scene/architecture-scene';
 
 @Component({
   selector: 'app-hero',
-  imports: [],
+  imports: [ArchitectureScene],
   templateUrl: './hero.html',
   styleUrl: './hero.css',
   changeDetection: ChangeDetectionStrategy.OnPush,

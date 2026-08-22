@@ -1,0 +1,19 @@
+<div class="architecture-scene" [class.architecture-scene--ready]="ready()">
+  <div class="architecture-scene__fallback" aria-hidden="true">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+  <canvas #canvas class="architecture-scene__canvas" aria-hidden="true"></canvas>
+
+  <ul class="architecture-scene__legend" aria-hidden="true">
+    <li>Interface</li>
+    <li>State</li>
+    <li>Services</li>
+    <li>API</li>
+    <li>Tests</li>
+  </ul>
+</div>

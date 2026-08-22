@@ -1,32 +1,36 @@
 import { Profile } from '../models/profile.model';
 
-// Replace every placeholder value before the public launch.
 export const profile: Profile = {
-  displayName: 'Mohammad Naufal Adib Hamdany',
+  displayName: 'Naufal Adib',
   professionalTitle: 'Frontend Engineer',
   heroStatement:
-    'I build scalable, maintainable, and user-focused web applications with a strong focus on frontend engineering.',
+    'Fresh graduate with nearly 2 years of experience building scalable, maintainable, and user-focused web applications.',
 
   about: [
-    'I’m a Frontend Engineer specializing in Angular and TypeScript, with experience building complex enterprise applications and translating business requirements into reliable, intuitive interfaces.',
-    'I care about clean architecture, maintainable code, thoughtful state management, and the small engineering decisions that make applications easier to scale and evolve.',
+    'I’m a Frontend Engineer and fresh Information Systems graduate with nearly 2 years of hands-on software engineering experience across internships, professional projects, and enterprise environments.',
+    'I specialize in Angular and TypeScript, with experience building applications used by thousands of users, designing complex frontend workflows, optimizing performance, and turning business requirements into reliable and intuitive interfaces.',
+    'Beyond shipping features, I care about how software is built, the clean architecture, predictable state management, thoughtful abstractions, testing, and engineering decisions that keep a codebase maintainable as the product grows.',
   ],
 
   focusAreas: [
     {
-      title: 'Frontend architecture',
-      description: 'Structure that stays understandable as product requirements grow.',
+      title: 'Frontend Architecture',
+      description:
+        'Designing maintainable application structures that can evolve with growing product and business requirements.',
     },
     {
-      title: 'Interface clarity',
-      description: 'Responsive, accessible interactions that make the next action obvious.',
+      title: 'Complex UI & Workflows',
+      description:
+        'Turning complex requirements, forms, states, and user flows into clear and reliable interfaces.',
     },
     {
-      title: 'Engineering care',
-      description: 'Strict types, focused tests, and state that remains predictable.',
+      title: 'Engineering Quality',
+      description:
+        'Building with strong types, predictable state, focused testing, and performance in mind.',
     },
   ],
 
   availability: 'Open to Frontend Engineer and Software Engineer opportunities.',
+
   email: 'naufal.adib.190403@gmail.com',
 };

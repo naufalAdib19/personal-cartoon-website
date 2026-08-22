@@ -56,5 +56,6 @@ describe('Hero', () => {
     expect(compiled.querySelector('[data-motion-hero-stamp]')).not.toBeNull();
     expect(compiled.querySelector('[data-motion-hero-title]')).not.toBeNull();
     expect(compiled.querySelectorAll('[data-motion-hero-signals] span')).toHaveLength(3);
+    expect(compiled.querySelector('app-architecture-scene canvas')).not.toBeNull();
   });
 });

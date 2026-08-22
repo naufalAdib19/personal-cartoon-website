@@ -44,6 +44,7 @@ h2 {
   font-size: var(--text-xl);
   line-height: 0.8;
   text-shadow: 2px 2px 0 var(--color-ink);
+  margin-bottom: 8px;
 }
 
 .work-experience__list {

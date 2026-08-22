@@ -145,6 +145,28 @@ li {
   background-size: 1.5rem 1.5rem;
 }
 
+@media (min-width: 56rem) {
+  app-hero .hero__screen.hero__screen {
+    display: flex;
+    flex-direction: column;
+    padding: var(--space-4) clamp(var(--space-4), 2.5vw, var(--space-6));
+  }
+
+  app-hero .hero__screen app-architecture-scene {
+    height: clamp(5.25rem, 8vw, 6.5rem);
+    flex: 0 0 auto;
+  }
+
+  app-hero .hero__screen .hero__signals {
+    margin-top: auto;
+  }
+
+  app-hero .hero__screen .hero__signals span {
+    background: var(--color-paper);
+    color: var(--color-ink);
+  }
+}
+
 .motion-reveal {
   animation: motion-reveal var(--duration-reveal) var(--ease-calm) both;
   animation-delay: var(--motion-delay, 0ms);

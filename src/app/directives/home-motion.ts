@@ -7,10 +7,13 @@ import {
   PendingTasks,
 } from '@angular/core';
 
+import { ArchitectureSceneController } from '../services/architecture-scene-controller';
+
 @Directive({
   selector: '[appHomeMotion]',
 })
 export class HomeMotion {
+  private readonly architectureScene = inject(ArchitectureSceneController);
   private readonly destroyRef = inject(DestroyRef);
   private readonly host = inject<ElementRef<HTMLElement>>(ElementRef);
   private readonly pendingTasks = inject(PendingTasks);
@@ -80,20 +83,25 @@ export class HomeMotion {
                 document.querySelector<HTMLElement>('app-site-header')?.getBoundingClientRect()
                   .height ?? 0;
 
-              gsap
-                .timeline({
-                  defaults: { ease: 'none' },
-                  scrollTrigger: {
-                    trigger: hero,
-                    start: () => `top top+=${headerHeight()}`,
-                    end: () => `+=${Math.max(window.innerHeight * 1.8, 1200)}`,
-                    scrub: 0.8,
-                    pin: true,
-                    pinSpacing: true,
-                    anticipatePin: 1,
-                    invalidateOnRefresh: true,
-                  },
-                })
+              const heroTimeline = gsap.timeline({
+                defaults: { ease: 'none' },
+                scrollTrigger: {
+                  trigger: hero,
+                  start: () => `top top+=${headerHeight()}`,
+                  end: () => `+=${Math.max(window.innerHeight * 1.8, 1200)}`,
+                  scrub: 0.8,
+                  pin: true,
+                  pinSpacing: true,
+                  anticipatePin: 1,
+                  invalidateOnRefresh: true,
+                },
+              });
+
+              heroTimeline.eventCallback('onUpdate', () => {
+                this.architectureScene.setProgress(heroTimeline.progress());
+              });
+
+              heroTimeline
                 .to(heroCopy, { autoAlpha: 0.38, xPercent: -6, yPercent: -10, duration: 1.1 }, 0)
                 .to(heroStage, { scale: 1.06, xPercent: 3, duration: 1.1 }, 0)
                 .to(heroBrowser, { rotation: 0.5, scale: 1.1, yPercent: -5, duration: 1.1 }, 0)
