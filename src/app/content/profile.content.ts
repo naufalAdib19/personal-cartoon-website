@@ -1,7 +1,7 @@
 import { Profile } from '../models/profile.model';
 
 export const profile: Profile = {
-  displayName: 'Naufal Adib Hamdany',
+  displayName: 'Naufal Adib',
   professionalTitle: 'Frontend Engineer',
   heroStatement:
     'Fresh graduate with nearly 2 years of experience building scalable, maintainable, and user-focused web applications.',
