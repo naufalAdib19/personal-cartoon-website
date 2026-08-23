@@ -36,6 +36,8 @@ jobs:
 
       - name: Deploy
         run: |
+          set -euo pipefail
+
           rsync -avz --delete \
-            dist/personal-website/browser/index.csr.html \
+            dist/personal-website/browser/ \
             ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}:/var/www/naufaladib.com/
